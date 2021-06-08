@@ -22,7 +22,7 @@
 		3E85C07D266F5F3700CF0A65 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E85C07B266F5F3700CF0A65 /* ContactTableViewCell.xib */; };
 		3E85C07F266F661700CF0A65 /* UIViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85C07E266F661700CF0A65 /* UIViewController+Error.swift */; };
 		3E85C081266F73E600CF0A65 /* ContactAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85C080266F73E600CF0A65 /* ContactAvatar.swift */; };
-		3E85C083266F77BF00CF0A65 /* ImageLoaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85C082266F77BF00CF0A65 /* ImageLoaderOperation.swift */; };
+		3E85C083266F77BF00CF0A65 /* AvatarLoaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85C082266F77BF00CF0A65 /* AvatarLoaderOperation.swift */; };
 		3E85C089266F7B8900CF0A65 /* NetworkAvatarsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85C088266F7B8900CF0A65 /* NetworkAvatarsLoader.swift */; };
 		3E85C08B266F939C00CF0A65 /* DetailesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85C08A266F939C00CF0A65 /* DetailesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +45,7 @@
 		3E85C07B266F5F3700CF0A65 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		3E85C07E266F661700CF0A65 /* UIViewController+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Error.swift"; sourceTree = "<group>"; };
 		3E85C080266F73E600CF0A65 /* ContactAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAvatar.swift; sourceTree = "<group>"; };
-		3E85C082266F77BF00CF0A65 /* ImageLoaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderOperation.swift; sourceTree = "<group>"; };
+		3E85C082266F77BF00CF0A65 /* AvatarLoaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarLoaderOperation.swift; sourceTree = "<group>"; };
 		3E85C088266F7B8900CF0A65 /* NetworkAvatarsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAvatarsLoader.swift; sourceTree = "<group>"; };
 		3E85C08A266F939C00CF0A65 /* DetailesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,7 +109,7 @@
 			children = (
 				3E85C076266F4E8600CF0A65 /* DataSource.swift */,
 				3E85C072266F42A800CF0A65 /* NetworkDataSource.swift */,
-				3E85C082266F77BF00CF0A65 /* ImageLoaderOperation.swift */,
+				3E85C082266F77BF00CF0A65 /* AvatarLoaderOperation.swift */,
 				3E85C088266F7B8900CF0A65 /* NetworkAvatarsLoader.swift */,
 			);
 			path = Manager;
@@ -213,7 +213,7 @@
 				3E85C061266F421400CF0A65 /* ViewController.swift in Sources */,
 				3E85C073266F42A800CF0A65 /* NetworkDataSource.swift in Sources */,
 				3E85C07C266F5F3700CF0A65 /* ContactTableViewCell.swift in Sources */,
-				3E85C083266F77BF00CF0A65 /* ImageLoaderOperation.swift in Sources */,
+				3E85C083266F77BF00CF0A65 /* AvatarLoaderOperation.swift in Sources */,
 				3E85C081266F73E600CF0A65 /* ContactAvatar.swift in Sources */,
 				3E85C05D266F421400CF0A65 /* AppDelegate.swift in Sources */,
 				3E85C07F266F661700CF0A65 /* UIViewController+Error.swift in Sources */,

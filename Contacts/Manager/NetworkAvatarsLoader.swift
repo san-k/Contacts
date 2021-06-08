@@ -1,5 +1,5 @@
 //
-//  AvatarLoadManager.swift
+//  NetworkAvatarsLoader.swift
 //  Contacts
 //
 //  Created by Oleksandr Kachanov on 08.06.2021.

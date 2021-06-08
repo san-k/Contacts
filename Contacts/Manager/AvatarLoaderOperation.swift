@@ -1,5 +1,5 @@
 //
-//  AvatarDownloader.swift
+//  AvatarLoaderOperation.swift
 //  Contacts
 //
 //  Created by Oleksandr Kachanov on 08.06.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageLoaderOperation: Operation {
+class AvatarLoaderOperation: Operation {
   let contactAvatar: ContactAvatar
   
   init(_ contactAvatar: ContactAvatar) {
@@ -21,15 +21,11 @@ class ImageLoaderOperation: Operation {
     
     guard let imageData = URL(string: contactAvatar.thumbnailUrl).flatMap({ try? Data(contentsOf: $0) }) else { return }
     
-    if isCancelled {
-      return
-    }
-    
     if !imageData.isEmpty {
       contactAvatar.thumbnailImage = UIImage(data:imageData)
-      contactAvatar.state = .downloaded
+        contactAvatar.thumbnailState = .downloaded
     } else {
-      contactAvatar.state = .failed
+      contactAvatar.thumbnailState = .failed
       contactAvatar.thumbnailImage = nil
     }
   }
