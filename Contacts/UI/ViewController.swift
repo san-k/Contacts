@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.contacts = contacts
                 self.contactAvatars = contacts.map({ contact in
-                    ContactAvatar(id: contact.id.value ?? UUID().uuidString)
+                    ContactAvatar(id: contact.id)
                 })
                 self.tableView.reloadData()
             }
@@ -71,7 +71,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row < contacts.count,
               let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-        let name = "\(contacts[indexPath.row].name.first) \(contacts[indexPath.row].name.last)"
+        let name = "\(contacts[indexPath.row].firstName) \(contacts[indexPath.row].lastName)"
         cell.set(fullName: name, email: contacts[indexPath.row].email)
         
         if contactAvatars[indexPath.row].thumbnailState == .new {

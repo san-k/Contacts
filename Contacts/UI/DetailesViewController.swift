@@ -18,7 +18,7 @@ class DetailesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = "\(contact.name.first) \(contact.name.last)"
+        nameLabel.text = "\(contact.firstName) \(contact.lastName)"
         emailLabel.text = "\(contact.email)"
         updateAvatar()
     }

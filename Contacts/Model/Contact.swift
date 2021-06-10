@@ -7,26 +7,18 @@
 
 import Foundation
 
-struct Contact: Codable {
-    internal init(email: String, name: Contact.Name, id: Contact.ID) {
+struct Contact {
+    internal init(email: String, firstName: String, lastName: String, id: String) {
         self.email = email
-        self.name = name
+        self.firstName = firstName
+        self.lastName = lastName
         self.id = id
     }
-    
-    struct Name: Codable {
-        let first: String
-        let last: String
-    }
-    struct ID: Codable {
-        internal init(value: String?) {
-            self.value = value
-        }
-        
-        let value: String?
-    }
-    
+
     let email: String
-    let name: Name
-    let id: ID
+    let firstName: String
+    let lastName: String
+    let id: String
 }
+
+

@@ -98,19 +98,8 @@ extension NetworkDataSource: ContactsLoader {
             }
 
             do {
-                let response = try JSONDecoder().decode(ContactsResponse<[Contact]>.self, from: data)
-                let contacts = response.results.map { (contact: Contact) -> Contact  in
-                    if contact.id.value == nil {
-                        return Contact(email: contact.email,
-                                       name: contact.name,
-                                       id: Contact.ID(value: UUID().uuidString))
-                    } else {
-                        return Contact(email: contact.email,
-                                       name: contact.name,
-                                       id: Contact.ID(value: contact.id.value?.replacingOccurrences(of:" ", with: "")))
-                    }
-                }
-                receiveValue(contacts)
+                let contactsRaw = try JSONDecoder().decode(ContactsResponse.self, from: data)
+                receiveValue(contactsRaw.contacts)
             } catch let DecodingError.dataCorrupted(context) {
                 print(context)
                 receiveError(.decodeError(DecodingError.dataCorrupted(context)))
