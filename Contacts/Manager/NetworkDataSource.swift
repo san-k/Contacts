@@ -66,7 +66,7 @@ extension NetworkDataSource: FullAvatarLoader {
             
             guard let location = location else {
                 contactAvatar.fullState = .failed
-                receiveError(.noData)
+                receiveError(.locationError)
                 return
             }
             
