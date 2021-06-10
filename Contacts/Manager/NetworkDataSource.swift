@@ -8,7 +8,7 @@
 import UIKit
 
 class NetworkDataSource {
-    private let session = URLSession(configuration: .default)
+    private let session = URLSession(configuration: URLSessionConfiguration.default)
     private let avatarLoader = NetworkAvatarsLoader()
 }
 
@@ -40,12 +40,12 @@ extension NetworkDataSource: AvatarsLoader {
 
 extension NetworkDataSource: FullAvatarLoader {
     func loadFullAvatar(for contactAvatar: ContactAvatar,
-                        receiveValue: @escaping (UIImage?) -> Void,
+                        receiveValue: @escaping () -> Void,
                         receiveError: @escaping (ContactError) -> Void) {
         
         guard contactAvatar.fullState != .downloading else { return }
         if contactAvatar.fullState == .downloaded {
-            receiveValue(contactAvatar.fullImage)
+            receiveValue()
             return
         }
         
@@ -57,24 +57,31 @@ extension NetworkDataSource: FullAvatarLoader {
         }
         
         contactAvatar.fullState = .downloading
-        let dataTask = session.dataTask(with: request) { data, _, error in
+        let downloadTask = session.downloadTask(with: request) { location, _, error in
             if let error = error {
                 contactAvatar.fullState = .failed
                 receiveError(.urlSessionError(error))
                 return
             }
-            guard let data = data, !data.isEmpty else {
+            
+            guard let location = location else {
                 contactAvatar.fullState = .failed
                 receiveError(.noData)
                 return
             }
-            let image = UIImage(data: data)
-            contactAvatar.fullState = .downloaded
-            contactAvatar.fullImage = image
-            receiveValue(image)
+            
+            let fileManager = FileManager.default
+            guard let savedLocation = contactAvatar.savedLocation else { return }
+            do {
+                try fileManager.moveItem(at: location, to: savedLocation)
+                contactAvatar.fullState = .downloaded
+                receiveValue()
+            } catch {
+                contactAvatar.fullState = .failed
+                receiveError(.noData)
+            }
         }
-        dataTask.resume()
-
+        downloadTask.resume()
     }
 }
 

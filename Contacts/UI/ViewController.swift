@@ -70,7 +70,9 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row < contacts.count,
-              let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
+              let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as? ContactTableViewCell else {
+            return UITableViewCell()
+        }
         let name = "\(contacts[indexPath.row].firstName) \(contacts[indexPath.row].lastName)"
         cell.set(fullName: name, email: contacts[indexPath.row].email)
         

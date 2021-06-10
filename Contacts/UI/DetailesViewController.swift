@@ -27,7 +27,7 @@ class DetailesViewController: UIViewController {
     func prepareWith(contact: Contact, avatar: ContactAvatar, fullAvatarLoader: FullAvatarLoader) {
         self.contact = contact
         self.avatar = avatar
-        fullAvatarLoader.loadFullAvatar(for: avatar) {[weak self] _ in
+        fullAvatarLoader.loadFullAvatar(for: avatar) {[weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.updateAvatar()
@@ -43,17 +43,7 @@ class DetailesViewController: UIViewController {
     
     private func updateAvatar() {
         guard let avatarImage = self.avatarImage else { return }
-        
-        switch avatar.fullState {
-        case .new, .downloading:
-            avatarImage.image = UIImage(systemName: "person")
-            avatarImage.image = UIImage(systemName: "person")
-        case .downloaded:
-            avatarImage.image = avatar.fullImage
-        case .failed:
-            avatar.fullImage = UIImage(systemName: "person.fill.xmark")
-        }
-
+        avatarImage.image = avatar.fullImage
     }
 
 }

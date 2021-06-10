@@ -24,7 +24,7 @@ protocol AvatarsLoader {
 
 protocol FullAvatarLoader {
     func loadFullAvatar(for contactAvatar: ContactAvatar,
-                        receiveValue: @escaping (UIImage?) -> Void,
+                        receiveValue: @escaping () -> Void,
                         receiveError: @escaping (ContactError) -> Void)
 
 }

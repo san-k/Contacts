@@ -52,10 +52,7 @@ class NetworkAvatarsLoader {
         
         guard let contactAvatar = contactAvatar else { return }
         guard case ContactAvatar.ThumbnailState.new = contactAvatar.thumbnailState else { return }
-        
-        guard downloadsInProgress[index] == nil else {
-            return
-        }
+        guard downloadsInProgress[index] == nil else { return }
         
         let downloader = AvatarLoaderOperation(contactAvatar)
         downloader.completionBlock = {

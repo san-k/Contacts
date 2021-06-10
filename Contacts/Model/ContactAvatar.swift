@@ -30,12 +30,27 @@ class ContactAvatar {
     var thumbnailState = ThumbnailState.new
     var fullState = FullState.new
     var thumbnailImage: UIImage?
-    var fullImage: UIImage?
-    
     
     var thumbnailUrl: String { url + "/79"}
     var fullUrl: String { url + "/5000"}
+    var savedLocation: URL? {
+        FileManager.default
+            .urls(for: .documentDirectory,
+                  in: .userDomainMask)
+            .first?
+            .appendingPathComponent(id)
+    }
     
+    var fullImage: UIImage? {
+        switch fullState {
+        case .new, .downloading:
+            return UIImage(systemName: "person")
+        case .downloaded:
+            return (savedLocation?.path).flatMap(UIImage.init(contentsOfFile:))
+        case .failed:
+            return UIImage(systemName: "person.fill.xmark")
+        }
+    }
     private let url: String
 
 }
