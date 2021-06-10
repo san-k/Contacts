@@ -70,15 +70,19 @@ extension NetworkDataSource: FullAvatarLoader {
                 return
             }
             
-            let fileManager = FileManager.default
-            guard let savedLocation = contactAvatar.savedLocation else { return }
+            guard let savedLocation = contactAvatar.savedLocation else {
+                contactAvatar.fullState = .failed
+                receiveError(.locationError)
+                return
+            }
+
             do {
-                try fileManager.moveItem(at: location, to: savedLocation)
+                try FileManager.default.moveItem(at: location, to: savedLocation)
                 contactAvatar.fullState = .downloaded
                 receiveValue()
             } catch {
                 contactAvatar.fullState = .failed
-                receiveError(.noData)
+                receiveError(.locationError)
             }
         }
         downloadTask.resume()
